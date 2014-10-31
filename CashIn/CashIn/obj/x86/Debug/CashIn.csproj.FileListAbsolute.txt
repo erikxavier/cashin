@@ -1,0 +1,17 @@
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\bin\Debug\Properties\AssemblyInfo.cs
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\bin\Debug\CashIn.exe
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\bin\Debug\CashIn.pdb
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\bin\Debug\DbLinq.dll
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\bin\Debug\DbLinq.MySql.dll
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\bin\Debug\MySql.Data.dll
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\MainWindow.baml
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\MainWindow.g.cs
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\App.g.cs
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn_MarkupCompile.cache
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.g.resources
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.Properties.Resources.resources
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.exe
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.pdb
