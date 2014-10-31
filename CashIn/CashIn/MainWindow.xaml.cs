@@ -18,6 +18,8 @@ namespace CashIn
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 	// comentário erik
+
+    //sbruble
     public partial class MainWindow : Window
     {
         public MainWindow()
