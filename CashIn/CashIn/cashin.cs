@@ -23,7 +23,7 @@ namespace CashIn
 	using System.Diagnostics;
 	
 	
-	public partial class Cashin : DataContext
+	public partial class CashinDB : DataContext
 	{
 		
 		#region Extensibility Method Declarations
@@ -31,19 +31,19 @@ namespace CashIn
 		#endregion
 		
 		
-		public Cashin(string connectionString) : 
+		public CashinDB(string connectionString) : 
 				base(connectionString)
 		{
 			this.OnCreated();            
 		}
 		
-		public Cashin(string connection, MappingSource mappingSource) : 
+		public CashinDB(string connection, MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			this.OnCreated();
 		}
 		
-		public Cashin(IDbConnection connection, MappingSource mappingSource) : 
+		public CashinDB(IDbConnection connection, MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			this.OnCreated();
@@ -164,22 +164,22 @@ namespace CashIn
 	
 
 	
-	public partial class Cashin
+	public partial class CashinDB
 	{
 		
-		public Cashin(IDbConnection connection) : 
+		public CashinDB(IDbConnection connection) : 
 				base(connection, new DbLinq.MySql.MySqlVendor())
 		{
 			this.OnCreated();
 		}
 		
-		public Cashin(IDbConnection connection, IVendor sqlDialect) : 
+		public CashinDB(IDbConnection connection, IVendor sqlDialect) : 
 				base(connection, sqlDialect)
 		{
 			this.OnCreated();
 		}
 		
-		public Cashin(IDbConnection connection, MappingSource mappingSource, IVendor sqlDialect) : 
+		public CashinDB(IDbConnection connection, MappingSource mappingSource, IVendor sqlDialect) : 
 				base(connection, mappingSource, sqlDialect)
 		{
 			this.OnCreated();

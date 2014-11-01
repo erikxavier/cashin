@@ -29,3 +29,5 @@ C:\Users\a1355121\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Deb
 C:\Users\a1355121\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.Properties.Resources.resources
 C:\Users\a1355121\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\a1355121\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\Login.baml
+C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\Login.g.cs

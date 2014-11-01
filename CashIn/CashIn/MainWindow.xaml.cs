@@ -22,6 +22,13 @@ namespace CashIn
     //sbruble
     public partial class MainWindow : Window
     {
+        private Usuario usuarioLogado;
+
+
+        public MainWindow(Usuario user)
+        {
+            usuarioLogado = user;            
+        }
         public MainWindow()
         {
             InitializeComponent();
