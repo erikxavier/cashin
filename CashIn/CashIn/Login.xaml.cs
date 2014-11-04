@@ -36,27 +36,18 @@ namespace CashIn
             {
                 CashinDB context = new CashinDB(new MySqlConnection("server=localhost;uid=root;database=cashin"));
                 context.Log = Console.Out;
-                var options = new DbLinq.Data.Linq.DataLoadOptions();
-                options.LoadWith<Usuario>(u => u.Pessoa);
-                MessageBox.Show("Loading enabled ? "+context.DeferredLoadingEnabled.ToString());
 
-                context.LoadOptions = options;
                 var query = (from u in context.Usuario
                              where u.User == user
                              && u.Pass == pass
-                             select new Usuario {
-                                User = u.User,
-                                Pass = u.Pass,
-                                Pessoa = u.Pessoa
-                             }
+                             select u
                              );
                 if (query.Any())
                 {                    
-                    Usuario usuario = query.Single<Usuario>();                    
-                    MessageBox.Show(usuario.Pessoa.Nome);
-                    //MainWindow window = new MainWindow(usuario);
-                    //window.Show();
-                    //this.Close();
+                    var usuario = query.Single();                    
+                    MainWindow window = new MainWindow(usuario);
+                    window.Show();
+                    this.Close();
                 }
                 else
                 {

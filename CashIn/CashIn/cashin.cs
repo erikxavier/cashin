@@ -5,21 +5,21 @@
 // | |_| | |_) | |  | |  __/ || (_| | |
 // |____/|_.__/|_|  |_|\___|\__\__,_|_|
 //
-// Auto-generated from cashin on 2014-10-13 19:05:38Z.
+// Auto-generated from cashin on 2014-11-04 21:06:49Z.
 // Please visit http://code.google.com/p/dblinq2007/ for more information.
 //
 namespace CashIn
 {
 	using System;
 	using System.ComponentModel;
-	using System.Data;    
+	using System.Data;
 #if MONO_STRICT
 	using System.Data.Linq;
 #else   // MONO_STRICT
 	using DbLinq.Data.Linq;
 	using DbLinq.Vendor;
-#endif  // MONO_STRICT    
-    using System.Data.Linq.Mapping;
+#endif  // MONO_STRICT
+	using System.Data.Linq.Mapping;
 	using System.Diagnostics;
 	
 	
@@ -34,7 +34,7 @@ namespace CashIn
 		public CashinDB(string connectionString) : 
 				base(connectionString)
 		{
-			this.OnCreated();            
+			this.OnCreated();
 		}
 		
 		public CashinDB(string connection, MappingSource mappingSource) : 
@@ -73,11 +73,11 @@ namespace CashIn
 			}
 		}
 		
-		public Table<Itemsorcamento> Itemsorcamento
+		public Table<Itensorcamento> Itensorcamento
 		{
 			get
 			{
-				return this.GetTable<Itemsorcamento>();
+				return this.GetTable<Itensorcamento>();
 			}
 		}
 		
@@ -162,7 +162,21 @@ namespace CashIn
 		}
 	}
 	
+	#region Start MONO_STRICT
+#if MONO_STRICT
 
+	public partial class Cashin
+	{
+		
+		public Cashin(IDbConnection connection) : 
+				base(connection)
+		{
+			this.OnCreated();
+		}
+	}
+	#region End MONO_STRICT
+	#endregion
+#else     // MONO_STRICT
 	
 	public partial class CashinDB
 	{
@@ -185,7 +199,10 @@ namespace CashIn
 			this.OnCreated();
 		}
 	}
-
+	#region End Not MONO_STRICT
+	#endregion
+#endif     // MONO_STRICT
+	#endregion
 	
 	[Table(Name="cashin.cidade")]
 	public partial class Cidade : System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
@@ -195,7 +212,7 @@ namespace CashIn
 		
 		private int _idcIdade;
 		
-		private System.Nullable<int> _iduF;
+		private string _iduF;
 		
 		private string _nome;
 		
@@ -212,7 +229,7 @@ namespace CashIn
 		
 		partial void OnIDUfChanged();
 		
-		partial void OnIDUfChanging(System.Nullable<int> value);
+		partial void OnIDUfChanging(string value);
 		
 		partial void OnNomeChanged();
 		
@@ -247,9 +264,9 @@ namespace CashIn
 			}
 		}
 		
-		[Column(Storage="_iduF", Name="idUf", DbType="int", AutoSync=AutoSync.Never)]
+		[Column(Storage="_iduF", Name="idUF", DbType="char(2)", AutoSync=AutoSync.Never)]
 		[DebuggerNonUserCode()]
-		public System.Nullable<int> IDUf
+		public string IDUf
 		{
 			get
 			{
@@ -257,7 +274,8 @@ namespace CashIn
 			}
 			set
 			{
-				if ((_iduF != value))
+				if (((_iduF == value) 
+							== false))
 				{
 					this.OnIDUfChanging(value);
 					this.SendPropertyChanging();
@@ -307,7 +325,7 @@ namespace CashIn
 		#endregion
 		
 		#region Parents
-		[Association(Storage="_uf", OtherKey="IDUf", ThisKey="IDUf", Name="fk_Cidade_UF1", IsForeignKey=true)]
+		[Association(Storage="_uf", OtherKey="IDUf", ThisKey="IDUf", Name="fk_Cidade_UF", IsForeignKey=true)]
 		[DebuggerNonUserCode()]
 		public Uf Uf
 		{
@@ -583,8 +601,6 @@ namespace CashIn
 		
 		private System.Nullable<int> _idpEssoa;
 		
-		private System.Nullable<int> _idtIpo;
-		
 		private string _logradouro;
 		
 		private EntityRef<Cidade> _cidade = new EntityRef<Cidade>();
@@ -607,10 +623,6 @@ namespace CashIn
 		partial void OnIDPessoaChanged();
 		
 		partial void OnIDPessoaChanging(System.Nullable<int> value);
-		
-		partial void OnIDTipoChanged();
-		
-		partial void OnIDTipoChanging(System.Nullable<int> value);
 		
 		partial void OnLogradouroChanged();
 		
@@ -708,27 +720,6 @@ namespace CashIn
 			}
 		}
 		
-		[Column(Storage="_idtIpo", Name="idTipo", DbType="int", AutoSync=AutoSync.Never)]
-		[DebuggerNonUserCode()]
-		public System.Nullable<int> IDTipo
-		{
-			get
-			{
-				return this._idtIpo;
-			}
-			set
-			{
-				if ((_idtIpo != value))
-				{
-					this.OnIDTipoChanging(value);
-					this.SendPropertyChanging();
-					this._idtIpo = value;
-					this.SendPropertyChanged("IDTipo");
-					this.OnIDTipoChanged();
-				}
-			}
-		}
-		
 		[Column(Storage="_logradouro", Name="Logradouro", DbType="varchar(200)", AutoSync=AutoSync.Never)]
 		[DebuggerNonUserCode()]
 		public string Logradouro
@@ -809,8 +800,8 @@ namespace CashIn
 		}
 	}
 	
-	[Table(Name="cashin.itemsorcamento")]
-	public partial class Itemsorcamento : System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	[Table(Name="cashin.itensorcamento")]
+	public partial class Itensorcamento : System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
 		private static System.ComponentModel.PropertyChangingEventArgs emptyChangingEventArgs = new System.ComponentModel.PropertyChangingEventArgs("");
@@ -852,7 +843,7 @@ namespace CashIn
 		#endregion
 		
 		
-		public Itemsorcamento()
+		public Itensorcamento()
 		{
 			this.OnCreated();
 		}
@@ -982,12 +973,12 @@ namespace CashIn
 					{
 						Orcamento previousOrcamento = this._orcamento.Entity;
 						this._orcamento.Entity = null;
-						previousOrcamento.Itemsorcamento.Remove(this);
+						previousOrcamento.Itensorcamento.Remove(this);
 					}
 					this._orcamento.Entity = value;
 					if ((value != null))
 					{
-						value.Itemsorcamento.Add(this);
+						value.Itensorcamento.Add(this);
 						_idoRcamento = value.IDOrcamento;
 					}
 					else
@@ -1407,7 +1398,7 @@ namespace CashIn
 		
 		private System.Nullable<System.DateTime> _validade;
 		
-		private EntitySet<Itemsorcamento> _itemsorcamento;
+		private EntitySet<Itensorcamento> _itensorcamento;
 		
 		private EntitySet<Projeto> _projeto;
 		
@@ -1442,7 +1433,7 @@ namespace CashIn
 		
 		public Orcamento()
 		{
-			_itemsorcamento = new EntitySet<Itemsorcamento>(new Action<Itemsorcamento>(this.Itemsorcamento_Attach), new Action<Itemsorcamento>(this.Itemsorcamento_Detach));
+			_itensorcamento = new EntitySet<Itensorcamento>(new Action<Itensorcamento>(this.Itensorcamento_Attach), new Action<Itensorcamento>(this.Itensorcamento_Detach));
 			_projeto = new EntitySet<Projeto>(new Action<Projeto>(this.Projeto_Attach), new Action<Projeto>(this.Projeto_Detach));
 			this.OnCreated();
 		}
@@ -1553,17 +1544,17 @@ namespace CashIn
 		}
 		
 		#region Children
-		[Association(Storage="_itemsorcamento", OtherKey="IDOrcamento", ThisKey="IDOrcamento", Name="fk_itemsOrcamento_Orcamento1")]
+		[Association(Storage="_itensorcamento", OtherKey="IDOrcamento", ThisKey="IDOrcamento", Name="fk_itemsOrcamento_Orcamento1")]
 		[DebuggerNonUserCode()]
-		public EntitySet<Itemsorcamento> Itemsorcamento
+		public EntitySet<Itensorcamento> Itensorcamento
 		{
 			get
 			{
-				return this._itemsorcamento;
+				return this._itensorcamento;
 			}
 			set
 			{
-				this._itemsorcamento = value;
+				this._itensorcamento = value;
 			}
 		}
 		
@@ -1673,13 +1664,13 @@ namespace CashIn
 		}
 		
 		#region Attachment handlers
-		private void Itemsorcamento_Attach(Itemsorcamento entity)
+		private void Itensorcamento_Attach(Itensorcamento entity)
 		{
 			this.SendPropertyChanging();
 			entity.Orcamento = this;
 		}
 		
-		private void Itemsorcamento_Detach(Itemsorcamento entity)
+		private void Itensorcamento_Detach(Itensorcamento entity)
 		{
 			this.SendPropertyChanging();
 			entity.Orcamento = null;
@@ -2944,7 +2935,7 @@ namespace CashIn
 		
 		private static System.ComponentModel.PropertyChangingEventArgs emptyChangingEventArgs = new System.ComponentModel.PropertyChangingEventArgs("");
 		
-		private int _iduF;
+		private string _iduF;
 		
 		private string _nome;
 		
@@ -2955,7 +2946,7 @@ namespace CashIn
 		
 		partial void OnIDUfChanged();
 		
-		partial void OnIDUfChanging(int value);
+		partial void OnIDUfChanging(string value);
 		
 		partial void OnNomeChanged();
 		
@@ -2969,9 +2960,9 @@ namespace CashIn
 			this.OnCreated();
 		}
 		
-		[Column(Storage="_iduF", Name="idUf", DbType="int", IsPrimaryKey=true, IsDbGenerated=true, AutoSync=AutoSync.Never, CanBeNull=false)]
+		[Column(Storage="_iduF", Name="idUf", DbType="char(2)", IsPrimaryKey=true, AutoSync=AutoSync.Never, CanBeNull=false)]
 		[DebuggerNonUserCode()]
-		public int IDUf
+		public string IDUf
 		{
 			get
 			{
@@ -2979,7 +2970,8 @@ namespace CashIn
 			}
 			set
 			{
-				if ((_iduF != value))
+				if (((_iduF == value) 
+							== false))
 				{
 					this.OnIDUfChanging(value);
 					this.SendPropertyChanging();
@@ -3013,7 +3005,7 @@ namespace CashIn
 		}
 		
 		#region Children
-		[Association(Storage="_cidade", OtherKey="IDUf", ThisKey="IDUf", Name="fk_Cidade_UF1")]
+		[Association(Storage="_cidade", OtherKey="IDUf", ThisKey="IDUf", Name="fk_Cidade_UF")]
 		[DebuggerNonUserCode()]
 		public EntitySet<Cidade> Cidade
 		{
