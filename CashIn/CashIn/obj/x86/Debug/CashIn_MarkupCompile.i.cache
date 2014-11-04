@@ -4,28 +4,16 @@
 exe
 C#
 .cs
-<<<<<<< HEAD
 C:\Users\a1355147\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\
-=======
-C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\
->>>>>>> 2ff1d89421691d8ea35a8548b6007975d9df9f0a
 CashIn
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\a1355147\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\App.xaml
 2-419086188
 
 8416834393
 16-12346694
-=======
-C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\App.xaml
-2-419086188
-
-868705070
-16-291898342
->>>>>>> 2ff1d89421691d8ea35a8548b6007975d9df9f0a
 Login.xaml;MainWindow.xaml;
 
 False
