@@ -34,14 +34,29 @@ namespace CashIn
         {
             try
             {
-                CashinDB context = new CashinDB(new MySqlConnection("server=localhost;uid=root;database=cashin"));                
-                var query = from u in context.Usuario
-                            where u.User == user
-                            && u.Pass == pass
-                            select u;
+                CashinDB context = new CashinDB(new MySqlConnection("server=localhost;uid=root;database=cashin"));
+                context.Log = Console.Out;
+                var options = new DbLinq.Data.Linq.DataLoadOptions();
+                options.LoadWith<Usuario>(u => u.Pessoa);
+                MessageBox.Show("Loading enabled ? "+context.DeferredLoadingEnabled.ToString());
+
+                context.LoadOptions = options;
+                var query = (from u in context.Usuario
+                             where u.User == user
+                             && u.Pass == pass
+                             select new Usuario {
+                                User = u.User,
+                                Pass = u.Pass,
+                                Pessoa = u.Pessoa
+                             }
+                             );
                 if (query.Any())
-                {
-                    MessageBox.Show("Login aceito");
+                {                    
+                    Usuario usuario = query.Single<Usuario>();                    
+                    MessageBox.Show(usuario.Pessoa.Nome);
+                    //MainWindow window = new MainWindow(usuario);
+                    //window.Show();
+                    //this.Close();
                 }
                 else
                 {
@@ -49,10 +64,9 @@ namespace CashIn
                 }
                 context.Dispose();
             }
-            catch (Exception)
+            catch
             {
-
-                throw;
+                MessageBox.Show("Algum problema ocorreu!", "Erro!");
             }            
         }
     }

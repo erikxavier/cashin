@@ -22,13 +22,15 @@ namespace CashIn
     //sbruble
     public partial class MainWindow : Window
     {
-        private Usuario usuarioLogado;
-
+        public Usuario UsuarioLogado { get; set; }
 
         public MainWindow(Usuario user)
         {
-            usuarioLogado = user;            
+            InitializeComponent();
+            UsuarioLogado = user;
+            this.Title = "CashIn - Logado como " + user.Pessoa.Nome;
         }
+
         public MainWindow()
         {
             InitializeComponent();
