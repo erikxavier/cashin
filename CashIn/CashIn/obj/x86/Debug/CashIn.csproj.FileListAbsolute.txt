@@ -31,3 +31,5 @@ C:\Users\a1355121\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Deb
 C:\Users\a1355121\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\Login.baml
 C:\Users\a1355112\Downloads\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\Login.g.cs
+C:\Users\a1355147\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.exe
+C:\Users\a1355147\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.pdb
