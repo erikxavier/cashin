@@ -52,7 +52,7 @@ namespace CashIn
                 else
                 {
                     MessageBox.Show("Usuário ou senha incorretos");
-                }
+                }                
                 context.Dispose();
             }
             catch

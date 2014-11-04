@@ -1,7 +1,7 @@
 ﻿<Window x:Class="CashIn.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login" Height="300" Width="300">
+        Title="Login" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Label Content="Usuário:" Height="28" HorizontalAlignment="Left" Margin="42,86,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Senha:" Height="28" HorizontalAlignment="Left" Margin="42,118,0,0" Name="label2" VerticalAlignment="Top" />
