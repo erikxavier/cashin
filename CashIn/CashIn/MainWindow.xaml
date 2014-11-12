@@ -3,11 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="CashIn" Height="350" Width="525" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid Height="200" HorizontalAlignment="Left" Margin="12,12,0,0" Name="dataGrid1" VerticalAlignment="Top" Width="200" ItemsSource="{Binding}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Codigo" Binding="{Binding IDOrcamento}" />
-                <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente.Pessoa.Nome}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <DockPanel>
+            <Menu Height="20" VerticalAlignment="Top" DockPanel.Dock="Top">
+                <MenuItem Header="Serviços">
+                    <MenuItem Header="Orçamentos" />
+                    <MenuItem Header="Projetos" />
+                </MenuItem>
+                <MenuItem Header="Cadastros">
+                    <MenuItem Header="Pessoas" Click="tabCadPessoa"/>
+                    <MenuItem Header="Clientes" />
+                    <MenuItem Header="Parceiros" />
+                    <MenuItem Header="Usuarios" />
+                    <MenuItem Header="Serviços Padrão" />
+                </MenuItem>
+                <MenuItem Header="Financeiro">
+                    <MenuItem Header="Balanço" />
+                    <MenuItem Header="Notas" />
+                    <MenuItem Header="Movimentos" />
+                </MenuItem>
+            </Menu>
+            <TabControl Height="auto" Width="auto" Name="tabControl1" DockPanel.Dock="Top">
+                <TabItem Header="Principal" Name="tabPrincipal">
+                    <Grid />
+                </TabItem>
+            </TabControl>
+        </DockPanel>
     </Grid>
 </Window>

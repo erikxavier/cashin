@@ -34,8 +34,8 @@ namespace CashIn
         {
             try
             {
-                CashinDB context = new CashinDB(new MySqlConnection("server=localhost;uid=root;database=cashin"));
-                context.Log = Console.Out;
+                CashinDB context = new CashinDB();
+                //context.Log = Console.Out;
 
                 var query = (from u in context.Usuario
                              where u.User == user

@@ -21,6 +21,7 @@ namespace CashIn
 #endif  // MONO_STRICT
 	using System.Data.Linq.Mapping;
 	using System.Diagnostics;
+    using MySql.Data.MySqlClient;
 	
 	
 	public partial class CashinDB : DataContext
@@ -29,7 +30,6 @@ namespace CashIn
 		#region Extensibility Method Declarations
 		partial void OnCreated();
 		#endregion
-		
 		
 		public CashinDB(string connectionString) : 
 				base(connectionString)
@@ -180,7 +180,12 @@ namespace CashIn
 	
 	public partial class CashinDB
 	{
-		
+        public CashinDB()
+            : base(new MySqlConnection("server=localhost;uid=root;database=cashin"), new DbLinq.MySql.MySqlVendor())
+        {
+            this.OnCreated();
+        }
+
 		public CashinDB(IDbConnection connection) : 
 				base(connection, new DbLinq.MySql.MySqlVendor())
 		{

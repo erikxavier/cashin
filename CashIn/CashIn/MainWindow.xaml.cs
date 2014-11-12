@@ -38,9 +38,15 @@ namespace CashIn
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dataGrid1.ItemsSource = UsuarioLogado.Orcamento.ToList();
-            //Orcamento orc = (Orcamento)dataGrid1.SelectedItem;
-            
+            //dataGrid1.ItemsSource = UsuarioLogado.Orcamento.ToList();
+            //Orcamento orc = (Orcamento)dataGrid1.SelectedItem;            
+        }
+
+        private void tabCadPessoa(object sender, RoutedEventArgs e)
+        {
+            TabItem tab = new TabItem();
+            tabControl1.Items.Add(tab);
+            tab.Content = new cadPessoa(tab);
         }
     }
 }
