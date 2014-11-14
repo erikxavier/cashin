@@ -607,6 +607,8 @@ namespace CashIn
 		private System.Nullable<int> _idpEssoa;
 		
 		private string _logradouro;
+
+        private string _cep;
 		
 		private EntityRef<Cidade> _cidade = new EntityRef<Cidade>();
 		
@@ -632,6 +634,10 @@ namespace CashIn
 		partial void OnLogradouroChanged();
 		
 		partial void OnLogradouroChanging(string value);
+
+        partial void OnCepChanged();
+
+        partial void OnCepChanging(string value);
 		#endregion
 		
 		
@@ -746,7 +752,28 @@ namespace CashIn
 				}
 			}
 		}
-		
+
+        [Column(Storage = "_cep", Name = "Cep", DbType = "varchar(9)", AutoSync = AutoSync.Never)]
+        [DebuggerNonUserCode()]
+        public string Cep
+        {
+            get
+            {
+                return this._cep;
+            }
+            set
+            {
+                if (((_cep == value)
+                            == false))
+                {
+                    this.OnCepChanging(value);
+                    this.SendPropertyChanging();
+                    this._cep = value;
+                    this.SendPropertyChanged("Cep");
+                    this.OnCepChanged();
+                }
+            }
+        }
 		#region Parents
 		[Association(Storage="_cidade", OtherKey="IDCidade", ThisKey="IDCidade", Name="fk_Endereco_Cidade1", IsForeignKey=true)]
 		[DebuggerNonUserCode()]

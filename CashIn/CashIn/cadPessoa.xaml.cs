@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CashIn
-{
+{   
     /// <summary>
     /// Interaction logic for cadPessoa.xaml
     /// </summary>
@@ -38,8 +38,8 @@ namespace CashIn
             TabPai = (TabControl)tab.Parent;
             tab.Content = this;
             tab.IsSelected = true;
-            tab.Name = "NomeDoObjetoTab";
-            tab.Header = "TituloDaTab";
+            tab.Name = "telaCadPessoa";
+            tab.Header = "Cadastrar Pessoa";            
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace CashIn
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(novaPessoa.Nome);
+            MessageBox.Show(novaPessoa.Sexo);            
         }
-    }
+    }        
 }

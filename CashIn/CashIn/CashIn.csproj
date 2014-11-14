@@ -86,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BoolToSexoConverter.cs" />
     <Compile Include="cadPessoa.xaml.cs">
       <DependentUpon>cadPessoa.xaml</DependentUpon>
     </Compile>

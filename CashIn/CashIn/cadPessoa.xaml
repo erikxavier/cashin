@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:CashIn.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="322" d:DesignWidth="938">
+    <UserControl.Resources>
+        <converters:BoolToSexoConverter x:Key="sexoConverter" />
+    </UserControl.Resources>
     <Grid Name="Grid1" Height="auto" Width="auto" Loaded="Grid_Loaded" DataContext="{Binding}">
         <Label Content="Nome:" Height="28" HorizontalAlignment="Left" Margin="56,56,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Data de Nascimento:" Height="28" HorizontalAlignment="Left" Margin="56,158,0,0" Name="label2" VerticalAlignment="Top" />
@@ -14,14 +18,14 @@
         <Label Content="Tipo da Pessoa" Height="28" HorizontalAlignment="Left" Margin="56,226,0,0" Name="label6" VerticalAlignment="Top" />
         <Label Content="Telefone" Height="28" HorizontalAlignment="Left" Margin="56,260,0,0" Name="label7" VerticalAlignment="Top" />
         <TextBox Text="{Binding Path=Nome}" Height="23" HorizontalAlignment="Left" Margin="234,61,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="234,90,0,0" Name="textBox2" VerticalAlignment="Top" Width="120" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="234,197,0,0" Name="textBox3" VerticalAlignment="Top" Width="120" />
-        <DatePicker Height="25" HorizontalAlignment="Left" Margin="234,158,0,0" Name="datePicker1" VerticalAlignment="Top" Width="115" />
-        <RadioButton Content="Masculino" Height="16" HorizontalAlignment="Left" Margin="239,127,0,0" Name="radioButton1" VerticalAlignment="Top" />
-        <RadioButton Content="Feminino" Height="16" HorizontalAlignment="Left" Margin="327,127,0,0" Name="radioButton2" VerticalAlignment="Top" />
-        <ComboBox Height="23" HorizontalAlignment="Left" Margin="234,226,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Content="Física" IsSelected="True" />
-            <ComboBoxItem Content="Jurídica" />
+        <TextBox Text="{Binding Path=Email}" Height="23" HorizontalAlignment="Left" Margin="234,90,0,0" Name="textBox2" VerticalAlignment="Top" Width="120" />
+        <TextBox Text="{Binding Path=Documento}" Height="23" HorizontalAlignment="Left" Margin="234,197,0,0" Name="textBox3" VerticalAlignment="Top" Width="120" />
+        <DatePicker SelectedDate="{Binding Path=Nscto}" Height="25" HorizontalAlignment="Left" Margin="234,158,0,0" Name="datePicker1" VerticalAlignment="Top" Width="115" />
+        <RadioButton IsChecked="{Binding Sexo, Converter={StaticResource sexoConverter}}" GroupName="rbSexo" Content="Masculino" Height="16" HorizontalAlignment="Left" Margin="239,127,0,0" Name="rbMas" VerticalAlignment="Top" />
+        <RadioButton GroupName="rbSexo" Content="Feminino" Height="16" HorizontalAlignment="Left" Margin="327,127,0,0" Name="rbFem" VerticalAlignment="Top" />
+        <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding TipoPessoa}" Height="23" HorizontalAlignment="Left" Margin="234,226,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+            <ComboBoxItem Tag="F" Content="Física" IsSelected="True" />
+            <ComboBoxItem Tag="J" Content="Jurídica" />
         </ComboBox>
         <TextBox Height="23" HorizontalAlignment="Left" Margin="234,260,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" />
         <Label Content="Endereço:" Height="28" HorizontalAlignment="Left" Margin="487,12,0,0" Name="label8" VerticalAlignment="Top" />
@@ -29,10 +33,12 @@
         <ComboBox Height="23" DisplayMemberPath="Nome" HorizontalAlignment="Left" Margin="560,95,0,0" Name="cbCidade" VerticalAlignment="Top" Width="120" />
         <Label Content="UF:" Height="28" HorizontalAlignment="Left" Margin="487,56,0,0" Name="label9" VerticalAlignment="Top" />
         <Label Content="Cidade:" Height="28" HorizontalAlignment="Left" Margin="487,90,0,0" Name="label10" VerticalAlignment="Top" />
-        <Label Content="Endereço:" Height="28" HorizontalAlignment="Left" Margin="487,192,0,0" Name="label11" VerticalAlignment="Top" />
-        <Label Content="Bairro:" Height="28" HorizontalAlignment="Left" Margin="487,141,0,0" Name="label12" VerticalAlignment="Top" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="560,141,0,0" Name="textBox5" VerticalAlignment="Top" Width="120" />
+        <Label Content="Endereço:" Height="28" HorizontalAlignment="Left" Margin="487,190,0,0" Name="label11" VerticalAlignment="Top" />
+        <Label Content="Bairro:" Height="28" HorizontalAlignment="Left" Margin="492,156,0,0" Name="label12" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="560,158,0,0" Name="textBox5" VerticalAlignment="Top" Width="120" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="560,192,0,0" Name="textBox6" VerticalAlignment="Top" Width="120" />
         <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="564,248,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,128,255,0" Name="textBox7" VerticalAlignment="Top" Width="120" />
+        <Label Content="CEP:" Height="28" HorizontalAlignment="Left" Margin="492,126,0,0" Name="label13" VerticalAlignment="Top" />
     </Grid>
 </UserControl>
