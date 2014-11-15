@@ -9,7 +9,8 @@
     <UserControl.Resources>
         <converters:BoolToSexoConverter x:Key="sexoConverter" />
     </UserControl.Resources>
-    <Grid Name="Grid1" Height="auto" Width="auto" Loaded="Grid_Loaded" DataContext="{Binding}">
+    <Grid Name="Grid1" Height="auto" Width="auto" Loaded="Grid_Loaded" DataContext="{Binding}"> 
+        <Grid Name="gridCadastro">
         <Label Content="Nome:" Height="28" HorizontalAlignment="Left" Margin="56,56,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Data de Nascimento:" Height="28" HorizontalAlignment="Left" Margin="56,158,0,0" Name="label2" VerticalAlignment="Top" />
         <Label Content="Sexo:" Height="28" HorizontalAlignment="Left" Margin="56,124,0,0" Name="label3" VerticalAlignment="Top" />
@@ -27,18 +28,25 @@
             <ComboBoxItem Tag="F" Content="Física" IsSelected="True" />
             <ComboBoxItem Tag="J" Content="Jurídica" />
         </ComboBox>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="234,260,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" />
+        <TextBox Text="{Binding Telefone}" Height="23" HorizontalAlignment="Left" Margin="234,260,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" />
         <Label Content="Endereço:" Height="28" HorizontalAlignment="Left" Margin="487,12,0,0" Name="label8" VerticalAlignment="Top" />
         <ComboBox Height="23" DisplayMemberPath="Nome" HorizontalAlignment="Left" Margin="560,56,0,0" Name="cbUf" VerticalAlignment="Top" Width="120" SelectionChanged="cbUf_SelectionChanged" />
-        <ComboBox Height="23" DisplayMemberPath="Nome" HorizontalAlignment="Left" Margin="560,95,0,0" Name="cbCidade" VerticalAlignment="Top" Width="120" />
-        <Label Content="UF:" Height="28" HorizontalAlignment="Left" Margin="487,56,0,0" Name="label9" VerticalAlignment="Top" />
-        <Label Content="Cidade:" Height="28" HorizontalAlignment="Left" Margin="487,90,0,0" Name="label10" VerticalAlignment="Top" />
-        <Label Content="Endereço:" Height="28" HorizontalAlignment="Left" Margin="487,190,0,0" Name="label11" VerticalAlignment="Top" />
-        <Label Content="Bairro:" Height="28" HorizontalAlignment="Left" Margin="492,156,0,0" Name="label12" VerticalAlignment="Top" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="560,158,0,0" Name="textBox5" VerticalAlignment="Top" Width="120" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="560,192,0,0" Name="textBox6" VerticalAlignment="Top" Width="120" />
-        <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="564,248,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
-        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,128,255,0" Name="textBox7" VerticalAlignment="Top" Width="120" />
-        <Label Content="CEP:" Height="28" HorizontalAlignment="Left" Margin="492,126,0,0" Name="label13" VerticalAlignment="Top" />
-    </Grid>
+        <Grid Name="gridEndereco">
+            <ComboBox Height="23" SelectedValuePath="IDCidade" DisplayMemberPath="Nome" HorizontalAlignment="Left" Margin="560,95,0,0" Name="cbCidade" VerticalAlignment="Top" Width="120" />        
+            <Label Content="UF:" Height="28" HorizontalAlignment="Left" Margin="487,56,0,0" Name="label9" VerticalAlignment="Top" />
+            <Label Content="Cidade:" Height="28" HorizontalAlignment="Left" Margin="487,90,0,0" Name="label10" VerticalAlignment="Top" />
+            <Label Content="Endereço:" Height="28" HorizontalAlignment="Left" Margin="487,190,0,0" Name="label11" VerticalAlignment="Top" />
+            <Label Content="Bairro:" Height="28" HorizontalAlignment="Left" Margin="492,156,0,0" Name="label12" VerticalAlignment="Top" />
+            <TextBox Text="{Binding Bairro}" Height="23" HorizontalAlignment="Left" Margin="560,158,0,0" Name="textBox5" VerticalAlignment="Top" Width="120" />
+            <TextBox Text="{Binding Logradouro}" Height="23" HorizontalAlignment="Left" Margin="560,192,0,0" Name="textBox6" VerticalAlignment="Top" Width="120" />
+            <TextBox Text="{Binding Cep}" Height="23" HorizontalAlignment="Right" Margin="0,128,255,0" Name="textBox7" VerticalAlignment="Top" Width="120" />
+            <Label Content="CEP:" Height="28" HorizontalAlignment="Left" Margin="492,126,0,0" Name="label13" VerticalAlignment="Top" />            
+        </Grid>
+        <Button Content="Salvar" Height="23" HorizontalAlignment="Left" Margin="564,248,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        </Grid>
+        <Grid Name="gridNovo">
+            <Button Content="Novo" Height="23" HorizontalAlignment="Left" Margin="687,247,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="button2_Click" />
+        </Grid>
+        
+    </Grid>    
 </UserControl>

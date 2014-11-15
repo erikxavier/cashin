@@ -23,6 +23,7 @@ namespace CashIn
         public TabItem Tab { get; set; }
         CashinDB context = new CashinDB();
         Pessoa novaPessoa;
+        Endereco novoEndereco;
 
         public cadPessoa()
         {
@@ -34,6 +35,7 @@ namespace CashIn
             InitializeComponent();
             context.Log = Console.Out;
             novaPessoa = new Pessoa();
+            novoEndereco = new Endereco();            
             Tab = tab;
             TabPai = (TabControl)tab.Parent;
             tab.Content = this;
@@ -46,17 +48,32 @@ namespace CashIn
         {            
             cbUf.ItemsSource = context.Uf;
             Grid1.DataContext = novaPessoa;
+            gridEndereco.DataContext = novoEndereco;            
         }
 
         private void cbUf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Uf uf = (Uf)cbUf.SelectedItem;
-            cbCidade.ItemsSource = uf.Cidade;
+            cbCidade.ItemsSource = uf.Cidade.ToList<Cidade>();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(novaPessoa.Sexo);            
+            novoEndereco.Cidade = (Cidade)cbCidade.SelectedItem;
+            novaPessoa.Endereco.Add(novoEndereco);
+            context.Pessoa.InsertOnSubmit(novaPessoa);
+            context.SubmitChanges();
+            gridCadastro.IsEnabled = false;
+            gridNovo.IsEnabled = true;
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            novaPessoa = new Pessoa();
+            novoEndereco = new Endereco();
+            Grid1.DataContext = novaPessoa;
+            gridCadastro.IsEnabled = true;
+            gridNovo.IsEnabled = false;
         }
     }        
 }

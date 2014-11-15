@@ -611,6 +611,8 @@ namespace CashIn
         private string _cep;
 		
 		private EntityRef<Cidade> _cidade = new EntityRef<Cidade>();
+
+        private EntityRef<Pessoa> _pessoa = new EntityRef<Pessoa>();
 		
 		#region Extensibility Method Declarations
 		partial void OnCreated();
@@ -807,6 +809,39 @@ namespace CashIn
 				}
 			}
 		}
+
+        [Association(Storage = "_pessoa", OtherKey = "IDPessoa", ThisKey = "IDPessoa", Name = "FK_endereco_pessoa", IsForeignKey = true)]
+        [DebuggerNonUserCode()]
+        public Pessoa Pessoa
+        {
+            get
+            {
+                return this._pessoa.Entity;
+            }
+            set
+            {
+                if (((this._pessoa.Entity == value)
+                            == false))
+                {
+                    if ((this._pessoa.Entity != null))
+                    {
+                        Pessoa previousPessoa = this._pessoa.Entity;
+                        this._pessoa.Entity = null;
+                        previousPessoa.Endereco.Remove(this);
+                    }
+                    this._pessoa.Entity = value;
+                    if ((value != null))
+                    {
+                        value.Endereco.Add(this);
+                        _idpEssoa = value.IDPessoa;
+                    }
+                    else
+                    {
+                        _idpEssoa = null;
+                    }
+                }
+            }
+        }
 		#endregion
 		
 		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
@@ -1743,6 +1778,8 @@ namespace CashIn
 		private string _telefone;
 		
 		private string _tipoPessoa;
+
+        private EntitySet<Endereco> _endereco;
 		
 		private EntitySet<Cliente> _cliente;
 		
@@ -1789,6 +1826,7 @@ namespace CashIn
 		{
 			_cliente = new EntitySet<Cliente>(new Action<Cliente>(this.Cliente_Attach), new Action<Cliente>(this.Cliente_Detach));
 			_usuario = new EntitySet<Usuario>(new Action<Usuario>(this.Usuario_Attach), new Action<Usuario>(this.Usuario_Detach));
+            _endereco = new EntitySet<Endereco>(new Action<Endereco>(this.Endereco_Attach), new Action<Endereco>(this.Endereco_Detach));
 			this.OnCreated();
 		}
 		
@@ -1967,6 +2005,20 @@ namespace CashIn
 		}
 		
 		#region Children
+        [Association(Storage = "_endereco", OtherKey = "IDPessoa", ThisKey = "IDPessoa", Name = "FK_endereco_pessoa")]
+        [DebuggerNonUserCode()]
+        public EntitySet<Endereco> Endereco
+        {
+            get
+            {
+                return this._endereco;
+            }
+            set
+            {
+                this._endereco = value;
+            }
+        }
+
 		[Association(Storage="_cliente", OtherKey="IDPessoa", ThisKey="IDPessoa", Name="fk_Cliente_Pessoa1")]
 		[DebuggerNonUserCode()]
 		public EntitySet<Cliente> Cliente
@@ -2042,6 +2094,18 @@ namespace CashIn
 			this.SendPropertyChanging();
 			entity.Pessoa = null;
 		}
+
+        private void Endereco_Attach(Endereco entity)
+        {
+            this.SendPropertyChanging();
+            entity.Pessoa = this;
+        }
+
+        private void Endereco_Detach(Endereco entity)
+        {
+            this.SendPropertyChanging();
+            entity.Pessoa = null;
+        }
 		#endregion
 	}
 	
