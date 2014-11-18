@@ -11,6 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
+using System.Reflection;
+using System.Threading;
 
 namespace CashIn
 {
@@ -29,6 +32,7 @@ namespace CashIn
             InitializeComponent();
             UsuarioLogado = user;
             this.Title = "CashIn - Logado como " + user.Pessoa.Nome;
+           
         }
 
         public MainWindow()
@@ -39,7 +43,10 @@ namespace CashIn
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //dataGrid1.ItemsSource = UsuarioLogado.Orcamento.ToList();
-            //Orcamento orc = (Orcamento)dataGrid1.SelectedItem;            
+            //Orcamento orc = (Orcamento)dataGrid1.SelectedItem;        
+            TabItem tab = new TabItem();
+            tabControl1.Items.Add(tab);
+            tab.Content = new dashboard(tab) { App = this };
         }
 
         private void tabCadPessoa(object sender, RoutedEventArgs e)
@@ -47,6 +54,6 @@ namespace CashIn
             TabItem tab = new TabItem();
             tabControl1.Items.Add(tab);
             tab.Content = new cadPessoa(tab);
-        }
+        }        
     }
 }

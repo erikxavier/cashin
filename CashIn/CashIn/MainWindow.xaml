@@ -22,11 +22,7 @@
                     <MenuItem Header="Movimentos" />
                 </MenuItem>
             </Menu>
-            <TabControl Height="auto" Width="auto" Name="tabControl1" DockPanel.Dock="Top">
-                <TabItem Header="Principal" Name="tabPrincipal">
-                    <Grid />
-                </TabItem>
-            </TabControl>
+            <TabControl Height="auto" Width="auto" Name="tabControl1" DockPanel.Dock="Top"></TabControl>
         </DockPanel>
     </Grid>
 </Window>

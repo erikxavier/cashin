@@ -18,8 +18,9 @@ C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug
 C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\TabModel.baml
 C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\cadPessoa.g.cs
 C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\TabModel.g.cs
-C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn_MarkupCompile.lref
+C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.csprojResolveAssemblyReference.cache
+C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\CashIn.csproj.GenerateResource.Cache
+C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\dashboard.baml
+C:\Users\a1355112\Desktop\GitPortable\App\Git\cashin\CashIn\CashIn\obj\x86\Debug\dashboard.g.cs

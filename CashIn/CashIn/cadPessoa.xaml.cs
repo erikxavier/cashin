@@ -33,9 +33,7 @@ namespace CashIn
         public cadPessoa(TabItem tab)
         {
             InitializeComponent();
-            context.Log = Console.Out;
-            novaPessoa = new Pessoa();
-            novoEndereco = new Endereco();            
+            context.Log = Console.Out;           
             Tab = tab;
             TabPai = (TabControl)tab.Parent;
             tab.Content = this;
@@ -45,16 +43,18 @@ namespace CashIn
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {            
-            cbUf.ItemsSource = context.Uf;
-            Grid1.DataContext = novaPessoa;
-            gridEndereco.DataContext = novoEndereco;            
+        {
+            novoCadastro();
+                       
         }
 
         private void cbUf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Uf uf = (Uf)cbUf.SelectedItem;
-            cbCidade.ItemsSource = uf.Cidade.ToList<Cidade>();
+            if (cbUf.SelectedIndex != -1)
+            {
+                Uf uf = (Uf)cbUf.SelectedItem;
+                cbCidade.ItemsSource = uf.Cidade.ToList<Cidade>();
+            }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -69,11 +69,21 @@ namespace CashIn
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
+            novoCadastro();
+        }
+
+        private void novoCadastro()
+        {
             novaPessoa = new Pessoa();
             novoEndereco = new Endereco();
             Grid1.DataContext = novaPessoa;
             gridCadastro.IsEnabled = true;
             gridNovo.IsEnabled = false;
-        }
+            cbUf.ItemsSource = context.Uf;
+            cbUf.SelectedIndex = -1;
+            cbCidade.ItemsSource = null;
+            Grid1.DataContext = novaPessoa;
+            gridEndereco.DataContext = novoEndereco; 
+        }        
     }        
 }
