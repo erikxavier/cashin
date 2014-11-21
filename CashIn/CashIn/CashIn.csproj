@@ -87,6 +87,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BoolToSexoConverter.cs" />
+    <Compile Include="cadOrcamento.xaml.cs">
+      <DependentUpon>cadOrcamento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="cadPessoa.xaml.cs">
       <DependentUpon>cadPessoa.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
     <Compile Include="TabModel.xaml.cs">
       <DependentUpon>TabModel.xaml</DependentUpon>
     </Compile>
+    <Page Include="cadOrcamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="cadPessoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

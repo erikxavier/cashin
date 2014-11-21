@@ -54,6 +54,14 @@ namespace CashIn
             TabItem tab = new TabItem();
             tabControl1.Items.Add(tab);
             tab.Content = new cadPessoa(tab);
-        }        
+        }
+
+        private void tabCadOrcamento(object sender, RoutedEventArgs e)
+        {
+            TabItem tab = new TabItem();
+            tabControl1.Items.Add(tab);
+            tab.Content = new cadOrcamento(tab) { App = this };
+        }
+
     }
 }

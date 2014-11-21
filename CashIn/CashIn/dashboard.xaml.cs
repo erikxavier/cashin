@@ -41,8 +41,9 @@ namespace CashIn
 
         private void atualizaTela()
         {
-            var orcamentosAguardando = App.UsuarioLogado.Orcamento.Where(o => !o.Projeto.Any());
-            gridOrcAguardando.ItemsSource = orcamentosAguardando;
+            //var orcamentosAguardando = App.UsuarioLogado.Orcamento.Where(o => !o.Projeto.Any());
+            //gridOrcAguardando.ItemsSource = orcamentosAguardando;
+            gridOrcAguardando.ItemsSource = App.UsuarioLogado.Orcamento.Where(o => !o.Projeto.Any());
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)

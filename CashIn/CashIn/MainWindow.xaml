@@ -6,7 +6,9 @@
         <DockPanel>
             <Menu Height="20" VerticalAlignment="Top" DockPanel.Dock="Top">
                 <MenuItem Header="Serviços">
-                    <MenuItem Header="Orçamentos" />
+                    <MenuItem Header="Orçamentos">
+                        <MenuItem Header="Novo" Click="tabCadOrcamento"/>
+                    </MenuItem>
                     <MenuItem Header="Projetos" />
                 </MenuItem>
                 <MenuItem Header="Cadastros">

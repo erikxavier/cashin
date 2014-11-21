@@ -83,7 +83,9 @@ namespace CashIn
             cbUf.SelectedIndex = -1;
             cbCidade.ItemsSource = null;
             Grid1.DataContext = novaPessoa;
-            gridEndereco.DataContext = novoEndereco; 
-        }        
+            gridEndereco.DataContext = novoEndereco;             
+        }
+
+       
     }        
 }
