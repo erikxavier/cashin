@@ -19,7 +19,7 @@ namespace CashIn
     /// </summary>
     public partial class dashboard : UserControl
     {
-        public TabControl TabPai { get; set; }
+        public ControleTabs Controle;
         public TabItem Tab { get; set; }
         public MainWindow App { get; set; }
 
@@ -28,15 +28,12 @@ namespace CashIn
             InitializeComponent();
         }
 
-        public dashboard(TabItem tab)
+        public dashboard(TabItem tab, ControleTabs controle)
         {
             InitializeComponent();
             Tab = tab;
-            TabPai = (TabControl)tab.Parent;            
-            tab.Content = this;
-            tab.IsSelected = true;
-            tab.Name = "tabDashboard";
-            tab.Header = "Principal";
+            Controle = controle;
+            App = controle.App;
         }
 
         private void atualizaTela()

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace CashIn
 {
@@ -19,11 +20,19 @@ namespace CashIn
     /// </summary>
     public partial class cadOrcamento : UserControl
     {
-        public TabControl TabPai { get; set; }
+        public ControleTabs Controle;
         public TabItem Tab { get; set; }
         public MainWindow App { get; set; }
         public Orcamento Orcamento;       
-        public List<Itensorcamento> ItensOrcamento = new List<Itensorcamento>();        
+        public List<Itensorcamento> ItensOrcamento;
+
+        public decimal Total
+        {
+            get
+            {
+                return ItensOrcamento.Sum(i => (decimal)i.Valor);                
+            }
+        }
 
         CashinDB DB = new CashinDB();
 
@@ -32,34 +41,30 @@ namespace CashIn
             InitializeComponent();
         }
 
-        public cadOrcamento(TabItem tab)
+        public cadOrcamento(TabItem tab, ControleTabs controle)
         {
             InitializeComponent();
+            this.Controle = controle;
             Tab = tab;
-            TabPai = (TabControl)tab.Parent;
-            tab.Content = this;
-            tab.IsSelected = true;
-            tab.Name = "tabCadOrcamento";
-            tab.Header = "Novo Orcamento";
+            App = controle.App;      
         }
 
         public void novoOrcamento()
         {
             Orcamento = new Orcamento();
+            gridItens.ItemsSource = Orcamento.Itensorcamento;
             Orcamento.Usuario = App.UsuarioLogado;
             Orcamento.Data = System.DateTime.Now;
             Orcamento.Validade = DateTime.Now.AddMonths(1);
-            mainGrid.DataContext = Orcamento;
-            gridItens.ItemsSource = ItensOrcamento;            
+            mainGrid.DataContext = Orcamento;                        
             cbCliente.ItemsSource = DB.Cliente;
-            cbItensPadrao.ItemsSource = App.UsuarioLogado.Itenspadrao;
+            cbItensPadrao.ItemsSource = App.UsuarioLogado.Itenspadrao;            
         }
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Orcamento.Itensorcamento.AddRange(ItensOrcamento);
                 DB.Orcamento.InsertOnSubmit(Orcamento);
                 DB.SubmitChanges();
                 MessageBox.Show("Orcamento Adicionado com Sucesso!", "Aviso");
@@ -102,6 +107,37 @@ namespace CashIn
             gridItens.ItemsSource = ItensOrcamento;
             dtData.SelectedDate = null;
             dtValidade.SelectedDate = null;
+        }
+
+        private void gridItens_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+
+        private void gridItens_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void gridItens_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            
         }
     }
 }

@@ -11,11 +11,10 @@ namespace CashIn.Converters
     {
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
-        {
-            decimal? valor = (decimal)value;            
-            if (valor != null)
+        {                       
+            if (value != null)
             {
-                return String.Format("{0:C}", valor);
+                return String.Format("{0:C}", (decimal)value);
             }
             else return String.Format("{0:C}", 0);
         }
@@ -25,7 +24,15 @@ namespace CashIn.Converters
         {
             if (value != null)
             {
-                return Decimal.Parse((string)value, NumberStyles.Currency);
+                try
+                {
+                    return Decimal.Parse((string)value, NumberStyles.Currency);
+                }
+                catch (Exception)
+                {
+                    
+                    return 0;
+                }
             }
             else return 0;
             

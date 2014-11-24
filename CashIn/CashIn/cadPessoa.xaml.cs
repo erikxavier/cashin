@@ -19,7 +19,7 @@ namespace CashIn
     /// </summary>
     public partial class cadPessoa : UserControl
     {
-        public TabControl TabPai { get; set; }
+        ControleTabs Controle;
         public TabItem Tab { get; set; }
         CashinDB context = new CashinDB();
         Pessoa novaPessoa;
@@ -30,16 +30,12 @@ namespace CashIn
             InitializeComponent();            
         }
 
-        public cadPessoa(TabItem tab)
+        public cadPessoa(TabItem tab, ControleTabs control)
         {
             InitializeComponent();
             context.Log = Console.Out;           
             Tab = tab;
-            TabPai = (TabControl)tab.Parent;
-            tab.Content = this;
-            tab.IsSelected = true;
-            tab.Name = "telaCadPessoa";
-            tab.Header = "Cadastrar Pessoa";            
+            this.Controle = control;            
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)

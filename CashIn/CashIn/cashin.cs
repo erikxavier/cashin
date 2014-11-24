@@ -1016,7 +1016,7 @@ namespace CashIn
 					this.OnValorChanging(value);
 					this.SendPropertyChanging();
 					this._valor = value;
-					this.SendPropertyChanged("Valor");
+					this.SendPropertyChanged("Valor");                    
 					this.OnValorChanged();
 				}
 			}
@@ -1616,12 +1616,13 @@ namespace CashIn
 		public EntitySet<Itensorcamento> Itensorcamento
 		{
 			get
-			{
-				return this._itensorcamento;
+			{                
+				return this._itensorcamento;                
 			}
 			set
 			{
 				this._itensorcamento = value;
+                this.SendPropertyChanged("Total");
 			}
 		}
 		

@@ -4,16 +4,16 @@
 exe
 C#
 .cs
-C:\Users\Lico\Documents\GitHub\cashin\CashIn\CashIn\obj\x86\Debug\
+C:\Users\Erik\Documents\GitHub\cashin\CashIn\CashIn\obj\x86\Debug\
 CashIn
 none
 false
 DEBUG;TRACE
-C:\Users\Lico\Documents\GitHub\cashin\CashIn\CashIn\App.xaml
+C:\Users\Erik\Documents\GitHub\cashin\CashIn\CashIn\App.xaml
 6-844274944
 
-131591460012
-16-1819300757
+15-198692235
+16-608997402
 cadOrcamento.xaml;cadPessoa.xaml;dashboard.xaml;Login.xaml;MainWindow.xaml;TabModel.xaml;
 
 False

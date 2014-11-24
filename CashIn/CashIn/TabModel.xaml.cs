@@ -19,23 +19,20 @@ namespace CashIn
     /// </summary>
     public partial class TabModel : UserControl
     {
-        public TabControl TabPai { get; set; }
+        public ControleTabs Control;
         public TabItem Tab { get; set; }
-
+        public MainWindow App;
         public TabModel()
         {
             InitializeComponent();
         }
 
-        public TabModel(TabItem tab)
+        public TabModel(TabItem tab, ControleTabs control)
         {
             InitializeComponent();
             Tab = tab;
-            TabPai = (TabControl)tab.Parent;
-            tab.Content = this;
-            tab.IsSelected = true;
-            tab.Name = "NomeDoObjetoTab";
-            tab.Header = "TituloDaTab";
+            Control = control;
+            App = control.App;
         }
     }
 }

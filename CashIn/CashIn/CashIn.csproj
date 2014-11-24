@@ -93,10 +93,15 @@
     <Compile Include="cadPessoa.xaml.cs">
       <DependentUpon>cadPessoa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControleTabs.cs" />
     <Compile Include="dashboard.xaml.cs">
       <DependentUpon>dashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="DecimalToReal.cs" />
+    <Compile Include="Orcamento.cs" />
+    <Compile Include="relatorio.xaml.cs">
+      <DependentUpon>relatorio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabModel.xaml.cs">
       <DependentUpon>TabModel.xaml</DependentUpon>
     </Compile>
@@ -132,6 +137,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="relatorio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TabModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

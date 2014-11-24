@@ -26,12 +26,14 @@ namespace CashIn
     public partial class MainWindow : Window
     {
         public Usuario UsuarioLogado { get; set; }
+        public ControleTabs Controle;            
 
         public MainWindow(Usuario user)
         {
             InitializeComponent();
             UsuarioLogado = user;
             this.Title = "CashIn - Logado como " + user.Pessoa.Nome;
+            Controle = new ControleTabs(this, tabControl1);
            
         }
 
@@ -42,25 +44,17 @@ namespace CashIn
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //dataGrid1.ItemsSource = UsuarioLogado.Orcamento.ToList();
-            //Orcamento orc = (Orcamento)dataGrid1.SelectedItem;        
-            TabItem tab = new TabItem();
-            tabControl1.Items.Add(tab);
-            tab.Content = new dashboard(tab) { App = this };
+            Controle.tabDash();
         }
 
         private void tabCadPessoa(object sender, RoutedEventArgs e)
         {
-            TabItem tab = new TabItem();
-            tabControl1.Items.Add(tab);
-            tab.Content = new cadPessoa(tab);
+            Controle.tabPessoa();
         }
 
         private void tabCadOrcamento(object sender, RoutedEventArgs e)
         {
-            TabItem tab = new TabItem();
-            tabControl1.Items.Add(tab);
-            tab.Content = new cadOrcamento(tab) { App = this };
+            Controle.tabOrcamento();
         }
 
     }
