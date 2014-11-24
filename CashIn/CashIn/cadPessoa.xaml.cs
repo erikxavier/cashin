@@ -21,7 +21,7 @@ namespace CashIn
     {
         ControleTabs Controle;
         public TabItem Tab { get; set; }
-        CashinDB context = new CashinDB();
+        CashinDB DB;
         Pessoa novaPessoa;
         Endereco novoEndereco;
 
@@ -32,8 +32,7 @@ namespace CashIn
 
         public cadPessoa(TabItem tab, ControleTabs control)
         {
-            InitializeComponent();
-            context.Log = Console.Out;           
+            InitializeComponent();                  
             Tab = tab;
             this.Controle = control;            
         }
@@ -57,8 +56,33 @@ namespace CashIn
         {
             novoEndereco.Cidade = (Cidade)cbCidade.SelectedItem;
             novaPessoa.Endereco.Add(novoEndereco);
-            context.Pessoa.InsertOnSubmit(novaPessoa);
-            context.SubmitChanges();
+
+            using (DB = new CashinDB())
+            {
+                if (rbCliente.IsChecked == true)
+                {
+                    Cliente novoCliente = new Cliente();
+                    novoCliente.Pessoa = novaPessoa;
+                    DB.Cliente.InsertOnSubmit(novoCliente);
+                }
+                else if (rbUser.IsChecked == true)
+                {
+                    if (!DB.Usuario.Where(u => u.User == tbUser.Text).Any())
+                    {
+                        Usuario novoUsuario = new Usuario();                                                
+                        novoUsuario.User = tbUser.Text;
+                        novoUsuario.Pass = tbPass.Password;
+                        novaPessoa.Usuario.Add(novoUsuario);
+                        DB.Usuario.InsertOnSubmit(novoUsuario);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nome de usuário já existente!", "Erro");
+                        return;
+                    }
+                }    
+            }         
+            DB.SubmitChanges();
             gridCadastro.IsEnabled = false;
             gridNovo.IsEnabled = true;
         }
@@ -75,7 +99,11 @@ namespace CashIn
             Grid1.DataContext = novaPessoa;
             gridCadastro.IsEnabled = true;
             gridNovo.IsEnabled = false;
-            cbUf.ItemsSource = context.Uf;
+
+            using (DB = new CashinDB())
+            {
+                cbUf.ItemsSource = DB.Uf; 
+            }
             cbUf.SelectedIndex = -1;
             cbCidade.ItemsSource = null;
             Grid1.DataContext = novaPessoa;

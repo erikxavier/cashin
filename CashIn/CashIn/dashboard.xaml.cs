@@ -34,18 +34,17 @@ namespace CashIn
             Tab = tab;
             Controle = controle;
             App = controle.App;
+            atualizaTela();
         }
 
         private void atualizaTela()
-        {
-            //var orcamentosAguardando = App.UsuarioLogado.Orcamento.Where(o => !o.Projeto.Any());
-            //gridOrcAguardando.ItemsSource = orcamentosAguardando;
-            gridOrcAguardando.ItemsSource = App.UsuarioLogado.Orcamento.Where(o => !o.Projeto.Any());
+        {            
+            gridOrcAguardando.ItemsSource = App.UsuarioLogado.Orcamento.Where(o => !o.Projeto.Any());            
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            atualizaTela();
+            atualizaTela();   
         }
     }
 }

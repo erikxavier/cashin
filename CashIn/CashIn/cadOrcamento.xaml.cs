@@ -34,7 +34,7 @@ namespace CashIn
             }
         }
 
-        CashinDB DB = new CashinDB();
+        private CashinDB DB;
 
         public cadOrcamento()
         {
@@ -46,7 +46,8 @@ namespace CashIn
             InitializeComponent();
             this.Controle = controle;
             Tab = tab;
-            App = controle.App;      
+            App = controle.App;
+            novoOrcamento();
         }
 
         public void novoOrcamento()
@@ -56,8 +57,10 @@ namespace CashIn
             Orcamento.Usuario = App.UsuarioLogado;
             Orcamento.Data = System.DateTime.Now;
             Orcamento.Validade = DateTime.Now.AddMonths(1);
-            mainGrid.DataContext = Orcamento;                        
+            mainGrid.DataContext = Orcamento; 
+            DB = new CashinDB();           
             cbCliente.ItemsSource = DB.Cliente;
+            DB.Dispose();
             cbItensPadrao.ItemsSource = App.UsuarioLogado.Itenspadrao;            
         }
 
@@ -65,10 +68,15 @@ namespace CashIn
         {
             try
             {
-                DB.Orcamento.InsertOnSubmit(Orcamento);
-                DB.SubmitChanges();
-                MessageBox.Show("Orcamento Adicionado com Sucesso!", "Aviso");
-                zeraCampos();
+
+                using (DB = new CashinDB())
+                {
+                    DB.Orcamento.InsertOnSubmit(Orcamento);
+                    DB.SubmitChanges();
+                    MessageBox.Show("Orcamento Adicionado com Sucesso!", "Aviso");
+                    zeraCampos(); 
+                }
+                
             }
             catch (Exception ex)
             {
@@ -78,24 +86,27 @@ namespace CashIn
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void mainGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            novoOrcamento();
+            
         }
 
         private void btnItensPadrao_Click(object sender, RoutedEventArgs e)
         {
-            Itenspadrao item = (Itenspadrao)cbItensPadrao.SelectedItem;
-            Itensorcamento novoItem = new Itensorcamento();
-            novoItem.Nome = item.Descricao;
-            novoItem.Valor = item.Valor;
-            ItensOrcamento.Add(
-                novoItem
-            );
-            gridItens.Items.Refresh();
+            if (cbItensPadrao.SelectedIndex != -1)
+            {
+                Itenspadrao item = (Itenspadrao)cbItensPadrao.SelectedItem;
+                Itensorcamento novoItem = new Itensorcamento();
+                novoItem.Nome = item.Descricao;
+                novoItem.Valor = item.Valor;
+                Orcamento.Itensorcamento.Add(
+                    novoItem
+                );
+                gridItens.Items.Refresh();
+            }
             //gridItens.ItemsSource = Orcamento.Itensorcamento; 
         }
 
